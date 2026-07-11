@@ -218,8 +218,8 @@ main {
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(22rem, 0.78fr);
-  gap: clamp(2rem, 6vw, 5.5rem);
+  grid-template-columns: minmax(35rem, 0.95fr) minmax(26rem, 0.72fr);
+  gap: clamp(2rem, 5vw, 5rem);
   align-items: center;
   min-height: calc(100svh - 78px);
   padding: clamp(4rem, 8vw, 7rem) clamp(1rem, 5vw, 5.5rem) clamp(3rem, 6vw, 5rem);
@@ -258,10 +258,11 @@ h3 {
 }
 
 h1 {
-  max-width: 12ch;
+  max-width: 16ch;
   margin-bottom: 1.3rem;
-  font-size: 5.4rem;
+  font-size: clamp(5.4rem, 6.2vw, 7.25rem);
   font-weight: 600;
+  text-wrap: balance;
 }
 
 h2 {
@@ -305,33 +306,42 @@ h3 {
 
 .hero-stage {
   position: relative;
-  min-height: 35rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+  justify-self: center;
+  width: min(39vw, 35.5rem);
+  min-width: 28rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(244, 238, 219, 0.28);
+  border-radius: 50%;
   background:
+    radial-gradient(circle at 35% 28%, rgba(244, 238, 219, 0.14), transparent 22%),
+    radial-gradient(circle at 70% 74%, rgba(168, 179, 159, 0.18), transparent 32%),
     linear-gradient(180deg, rgba(25, 37, 20, 0.18), rgba(25, 37, 20, 0.02)),
     var(--pine);
-  box-shadow: var(--shadow);
+  box-shadow: 0 34px 90px rgba(25, 37, 20, 0.18);
   isolation: isolate;
-  overflow: hidden;
+  overflow: visible;
+  animation: medallionFloat 8s ease-in-out infinite;
 }
 
 .hero-stage::before {
   position: absolute;
   inset: 1.1rem;
   content: "";
-  border: 1px solid rgba(244, 238, 219, 0.18);
-  border-radius: 6px;
+  border: 1px solid rgba(244, 238, 219, 0.22);
+  border-right-color: rgba(226, 200, 160, 0.72);
+  border-radius: 50%;
+  animation: slowSpin 20s linear infinite;
 }
 
 .hero-stage::after {
   position: absolute;
-  inset: auto -6rem -7rem auto;
-  width: 22rem;
-  height: 22rem;
+  inset: -0.85rem;
   content: "";
-  border: 1px solid rgba(244, 238, 219, 0.28);
+  border: 1px solid rgba(47, 68, 39, 0.12);
+  border-top-color: rgba(226, 200, 160, 0.76);
+  border-bottom-color: rgba(255, 253, 245, 0.4);
   border-radius: 50%;
+  animation: slowSpin 28s linear infinite reverse;
 }
 
 .hero-logo-wrap {
@@ -339,13 +349,16 @@ h3 {
   top: 50%;
   left: 50%;
   z-index: 2;
-  width: min(74%, 24rem);
+  width: min(66%, 23rem);
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: #050704;
   overflow: hidden;
-  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.36);
+  box-shadow:
+    0 18px 60px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(226, 200, 160, 0.22);
+  animation: logoBreath 5.8s ease-in-out infinite;
 }
 
 .hero-logo-wrap img {
@@ -356,14 +369,15 @@ h3 {
 
 .hero-metric {
   position: absolute;
-  right: 1.6rem;
-  bottom: 1.6rem;
+  right: -0.8rem;
+  bottom: 2.8rem;
   z-index: 3;
-  width: 9.5rem;
+  width: 10.25rem;
   padding: 1rem;
   color: var(--pine-deep);
   background: var(--linen);
   border-radius: var(--radius);
+  box-shadow: 0 18px 40px rgba(25, 37, 20, 0.16);
 }
 
 .hero-metric strong,
@@ -435,6 +449,34 @@ h3 {
 
 .leaf-line-two::after {
   display: none;
+}
+
+@keyframes slowSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes medallionFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes logoBreath {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.035);
+  }
 }
 
 .intro-strip {
@@ -867,12 +909,13 @@ h3 {
   }
 
   .hero-stage {
-    min-height: 30rem;
+    width: min(34rem, 82vw);
+    min-width: 0;
   }
 
   h1 {
-    max-width: 11ch;
-    font-size: 4.2rem;
+    max-width: 14ch;
+    font-size: 4.35rem;
   }
 
   h2 {
@@ -934,8 +977,8 @@ h3 {
   }
 
   h1 {
-    max-width: 9.2ch;
-    font-size: 3.25rem;
+    max-width: 11.5ch;
+    font-size: 3rem;
   }
 
   h2 {
@@ -960,14 +1003,19 @@ h3 {
     min-height: 24rem;
   }
 
+  .hero-stage {
+    width: min(22rem, 84vw);
+    min-height: auto;
+  }
+
   .hero-logo-wrap {
-    width: 78%;
+    width: 70%;
   }
 
   .hero-metric {
-    right: 1rem;
+    right: -0.25rem;
     bottom: 1rem;
-    width: 8.3rem;
+    width: 8.1rem;
   }
 
   .care-steps article {
