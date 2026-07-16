@@ -14,6 +14,43 @@ const revealObserver = new IntersectionObserver(
 
 revealItems.forEach((item) => revealObserver.observe(item));
 
+const conditionTabs = document.querySelectorAll("[data-condition]");
+const conditionPanels = document.querySelectorAll("[data-condition-panel]");
+
+function activateCondition(conditionId) {
+  conditionTabs.forEach((tab) => {
+    const isActive = tab.dataset.condition === conditionId;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+  });
+
+  conditionPanels.forEach((panel) => {
+    const isActive = panel.dataset.conditionPanel === conditionId;
+    panel.classList.toggle("is-active", isActive);
+    panel.hidden = !isActive;
+  });
+}
+
+conditionTabs.forEach((tab) => {
+  tab.addEventListener("click", () => activateCondition(tab.dataset.condition));
+  tab.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+
+    event.preventDefault();
+    const tabs = [...conditionTabs];
+    const currentIndex = tabs.indexOf(tab);
+    let nextIndex = currentIndex;
+
+    if (event.key === "ArrowRight") nextIndex = (currentIndex + 1) % tabs.length;
+    if (event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = tabs.length - 1;
+
+    tabs[nextIndex].focus();
+    activateCondition(tabs[nextIndex].dataset.condition);
+  });
+});
+
 const canvas = document.getElementById("nourishCanvas");
 const context = canvas.getContext("2d");
 

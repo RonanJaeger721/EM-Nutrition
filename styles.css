@@ -649,13 +649,145 @@ h3 {
   background: rgba(255, 253, 245, 0.055);
 }
 
-.service-list.clinical ul {
-  columns: 1;
-}
-
 .service-list.clinical p {
   margin: 1.4rem 0 0;
   color: rgba(255, 253, 245, 0.68);
+}
+
+.condition-guide {
+  display: grid;
+  gap: 1rem;
+}
+
+.condition-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.condition-tab {
+  appearance: none;
+  border: 1px solid rgba(244, 238, 219, 0.2);
+  border-radius: 999px;
+  padding: 0.62rem 0.85rem;
+  color: rgba(255, 253, 245, 0.76);
+  background: rgba(255, 253, 245, 0.055);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.condition-tab:hover,
+.condition-tab:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(226, 200, 160, 0.58);
+  color: var(--ivory);
+  outline: 0;
+}
+
+.condition-tab.is-active {
+  color: var(--pine-deep);
+  background: var(--linen);
+  border-color: rgba(226, 200, 160, 0.9);
+}
+
+.condition-panels {
+  position: relative;
+}
+
+.condition-panel {
+  min-height: 24rem;
+  padding: 1.35rem;
+  border: 1px solid rgba(244, 238, 219, 0.16);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 253, 245, 0.1), rgba(255, 253, 245, 0.035)),
+    rgba(25, 37, 20, 0.34);
+  box-shadow: inset 0 1px 0 rgba(255, 253, 245, 0.08);
+}
+
+.condition-panel[hidden] {
+  display: none;
+}
+
+.condition-panel span {
+  display: inline-flex;
+  margin-bottom: 0.65rem;
+  color: #e2c8a0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.condition-panel h4 {
+  margin: 0 0 0.8rem;
+  color: var(--linen);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.condition-panel p {
+  margin: 0 0 1rem;
+  color: rgba(255, 253, 245, 0.76);
+}
+
+.condition-panel ul {
+  columns: 1;
+  margin: 0;
+  color: rgba(255, 253, 245, 0.8);
+}
+
+.condition-panel li {
+  margin: 0 0 0.65rem;
+}
+
+.condition-note {
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(244, 238, 219, 0.14);
+  font-size: 0.92rem;
+}
+
+.condition-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.2rem;
+}
+
+.condition-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.7rem;
+  padding: 0.75rem 0.95rem;
+  border: 1px solid rgba(226, 200, 160, 0.26);
+  border-radius: 999px;
+  color: var(--ivory);
+  background: rgba(255, 253, 245, 0.075);
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.condition-actions a:first-child {
+  color: var(--pine-deep);
+  background: var(--linen);
+}
+
+.condition-actions a:hover,
+.condition-actions a:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(255, 253, 245, 0.14);
+  outline: 0;
+}
+
+.condition-actions a:first-child:hover,
+.condition-actions a:first-child:focus-visible {
+  background: #e2c8a0;
 }
 
 .program-stack {
@@ -1028,6 +1160,26 @@ h3 {
 
   .service-list.clinical {
     padding: 1.2rem;
+  }
+
+  .condition-tab {
+    flex: 1 1 calc(50% - 0.45rem);
+    padding-right: 0.65rem;
+    padding-left: 0.65rem;
+    text-align: center;
+  }
+
+  .condition-panel {
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .condition-panel h4 {
+    font-size: 1.65rem;
+  }
+
+  .condition-actions a {
+    width: 100%;
   }
 
   .program.featured {
