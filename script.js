@@ -51,6 +51,43 @@ conditionTabs.forEach((tab) => {
   });
 });
 
+const wellnessTabs = document.querySelectorAll("[data-wellness]");
+const wellnessPanels = document.querySelectorAll("[data-wellness-panel]");
+
+function activateWellness(wellnessId) {
+  wellnessTabs.forEach((tab) => {
+    const isActive = tab.dataset.wellness === wellnessId;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+  });
+
+  wellnessPanels.forEach((panel) => {
+    const isActive = panel.dataset.wellnessPanel === wellnessId;
+    panel.classList.toggle("is-active", isActive);
+    panel.hidden = !isActive;
+  });
+}
+
+wellnessTabs.forEach((tab) => {
+  tab.addEventListener("click", () => activateWellness(tab.dataset.wellness));
+  tab.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+
+    event.preventDefault();
+    const tabs = [...wellnessTabs];
+    const currentIndex = tabs.indexOf(tab);
+    let nextIndex = currentIndex;
+
+    if (event.key === "ArrowRight") nextIndex = (currentIndex + 1) % tabs.length;
+    if (event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = tabs.length - 1;
+
+    tabs[nextIndex].focus();
+    activateWellness(tabs[nextIndex].dataset.wellness);
+  });
+});
+
 const canvas = document.getElementById("nourishCanvas");
 const context = canvas.getContext("2d");
 

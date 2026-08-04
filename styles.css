@@ -481,7 +481,7 @@ h3 {
 
 .intro-strip {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   margin: 0 clamp(1rem, 5vw, 5.5rem);
   border: 1px solid var(--line);
@@ -640,6 +640,162 @@ h3 {
 .service-list li {
   break-inside: avoid;
   margin: 0 0 0.75rem;
+}
+
+.wellness-guide {
+  display: grid;
+  gap: 1rem;
+}
+
+.wellness-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.wellness-tab {
+  appearance: none;
+  border: 1px solid rgba(244, 238, 219, 0.16);
+  border-radius: 999px;
+  padding: 0.62rem 0.85rem;
+  color: rgba(255, 253, 245, 0.78);
+  background: rgba(255, 253, 245, 0.052);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.wellness-tab:hover,
+.wellness-tab:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(226, 200, 160, 0.58);
+  color: var(--ivory);
+  outline: 0;
+}
+
+.wellness-tab.is-active {
+  color: var(--pine-deep);
+  background: var(--linen);
+  border-color: rgba(226, 200, 160, 0.92);
+}
+
+.wellness-panels {
+  position: relative;
+}
+
+.wellness-panel {
+  min-height: 24rem;
+  padding: 1.35rem;
+  border: 1px solid rgba(244, 238, 219, 0.16);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 253, 245, 0.1), rgba(255, 253, 245, 0.035)),
+    rgba(25, 37, 20, 0.34);
+  box-shadow: inset 0 1px 0 rgba(255, 253, 245, 0.08);
+}
+
+.wellness-panel[hidden] {
+  display: none !important;
+}
+
+.wellness-panel.has-image {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(12rem, 0.72fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.wellness-panel.has-image .service-actions {
+  grid-column: 1 / -1;
+}
+
+.wellness-panel span {
+  display: inline-flex;
+  margin-bottom: 0.65rem;
+  color: #e2c8a0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.wellness-panel h4 {
+  margin: 0 0 0.8rem;
+  color: var(--linen);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.wellness-panel p {
+  margin: 0 0 1rem;
+  color: rgba(255, 253, 245, 0.76);
+}
+
+.wellness-panel ul {
+  columns: 1;
+  margin: 0;
+  color: rgba(255, 253, 245, 0.8);
+}
+
+.wellness-panel li {
+  margin: 0 0 0.65rem;
+}
+
+.wellness-panel img {
+  width: 100%;
+  height: 100%;
+  min-height: 14rem;
+  object-fit: cover;
+  border: 1px solid rgba(244, 238, 219, 0.18);
+  border-radius: var(--radius);
+  filter: saturate(0.95) contrast(0.96);
+}
+
+.wellness-panel.portrait-image img {
+  object-fit: cover;
+  background: var(--ivory);
+}
+
+.service-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.2rem;
+}
+
+.service-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.7rem;
+  padding: 0.75rem 0.95rem;
+  border: 1px solid rgba(226, 200, 160, 0.26);
+  border-radius: 999px;
+  color: var(--ivory);
+  background: rgba(255, 253, 245, 0.075);
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.service-actions a:first-child {
+  color: var(--pine-deep);
+  background: var(--linen);
+}
+
+.service-actions a:hover,
+.service-actions a:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(255, 253, 245, 0.14);
+  outline: 0;
+}
+
+.service-actions a:first-child:hover,
+.service-actions a:first-child:focus-visible {
+  background: #e2c8a0;
 }
 
 .service-list.clinical {
@@ -1179,6 +1335,32 @@ h3 {
   }
 
   .condition-actions a {
+    width: 100%;
+  }
+
+  .wellness-tab {
+    flex: 1 1 calc(50% - 0.45rem);
+    padding-right: 0.65rem;
+    padding-left: 0.65rem;
+    text-align: center;
+  }
+
+  .wellness-panel,
+  .wellness-panel.has-image {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .wellness-panel h4 {
+    font-size: 1.65rem;
+  }
+
+  .wellness-panel img {
+    min-height: 12rem;
+  }
+
+  .service-actions a {
     width: 100%;
   }
 
