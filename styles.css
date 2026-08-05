@@ -1162,13 +1162,14 @@ h3 {
 }
 
 .profile-copy h2 {
-  max-width: 13ch;
+  max-width: 19ch;
   margin-bottom: 1.2rem;
   color: var(--pine);
 }
 
 .profile-copy > p {
   max-width: 45rem;
+  margin-bottom: 1rem;
   color: var(--muted);
   font-size: 1.05rem;
 }
@@ -1194,10 +1195,54 @@ h3 {
   font-weight: 800;
 }
 
+.profile-note {
+  display: inline-grid;
+  gap: 0.1rem;
+  max-width: 33rem;
+  margin-bottom: 1.1rem;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid var(--clay);
+  color: var(--pine);
+  background: rgba(244, 238, 219, 0.66);
+}
+
+.profile-note strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.profile-note span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.profile-personal {
+  font-size: 0.98rem;
+}
+
+.profile-signature {
+  color: var(--pine);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+
+.profile-signature span {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
 .profile-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  margin-top: 1.2rem;
 }
 
 .profile-actions a {
@@ -1556,7 +1601,7 @@ h3 {
   }
 
   .profile-copy h2 {
-    max-width: 13ch;
+    max-width: 15ch;
   }
 
   .profile-actions,
