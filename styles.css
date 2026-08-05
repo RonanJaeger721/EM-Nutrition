@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 8rem;
 }
 
 body {
@@ -507,6 +508,7 @@ h3 {
 .services,
 .programs,
 .bridal,
+.profile,
 .assurance,
 .site-footer {
   padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 5vw, 5.5rem);
@@ -1072,6 +1074,163 @@ h3 {
   height: auto;
 }
 
+.profile {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.48fr) minmax(0, 0.72fr);
+  gap: clamp(2rem, 6vw, 5.5rem);
+  align-items: center;
+  background:
+    radial-gradient(circle at 20% 14%, rgba(183, 121, 103, 0.11), transparent 24rem),
+    linear-gradient(90deg, rgba(47, 68, 39, 0.07), transparent 56%),
+    var(--ivory);
+}
+
+.profile-portrait {
+  position: relative;
+  margin: 0;
+  min-height: 36rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  isolation: isolate;
+}
+
+.profile-portrait::before {
+  position: absolute;
+  inset: 1rem;
+  z-index: 2;
+  content: "";
+  border: 1px solid rgba(255, 253, 245, 0.42);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.profile-portrait::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  background: linear-gradient(180deg, transparent 48%, rgba(25, 37, 20, 0.34));
+  pointer-events: none;
+}
+
+.profile-portrait img {
+  width: 100%;
+  height: 100%;
+  min-height: 36rem;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: saturate(0.96) contrast(0.98);
+}
+
+.profile-badge {
+  position: absolute;
+  right: 1.4rem;
+  bottom: 1.4rem;
+  z-index: 3;
+  display: grid;
+  width: 7.2rem;
+  height: 7.2rem;
+  place-items: center;
+  padding: 1rem;
+  color: var(--ivory);
+  background: rgba(25, 37, 20, 0.9);
+  border: 1px solid rgba(244, 238, 219, 0.24);
+  border-radius: 50%;
+  text-align: center;
+  backdrop-filter: blur(14px);
+}
+
+.profile-badge strong,
+.profile-badge span {
+  display: block;
+}
+
+.profile-badge strong {
+  margin-bottom: -1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.profile-badge span {
+  color: rgba(255, 253, 245, 0.72);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.profile-copy h2 {
+  max-width: 13ch;
+  margin-bottom: 1.2rem;
+  color: var(--pine);
+}
+
+.profile-copy > p {
+  max-width: 45rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.profile-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  max-width: 44rem;
+  margin: 1.7rem 0 2rem;
+}
+
+.profile-points span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.55rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--pine);
+  background: rgba(244, 238, 219, 0.5);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.profile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.profile-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--pine);
+  background: rgba(255, 253, 245, 0.78);
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.profile-actions a:first-child {
+  color: var(--ivory);
+  background: var(--pine);
+}
+
+.profile-actions a:hover,
+.profile-actions a:focus-visible {
+  transform: translateY(-2px);
+  outline: 0;
+}
+
+.profile-actions a:first-child:hover,
+.profile-actions a:first-child:focus-visible {
+  background: var(--pine-deep);
+}
+
 .assurance {
   background: var(--ivory);
 }
@@ -1188,6 +1347,7 @@ h3 {
   .care-grid,
   .service-columns,
   .bridal,
+  .profile,
   .site-footer {
     grid-template-columns: 1fr;
   }
@@ -1245,11 +1405,15 @@ h3 {
 
   nav {
     gap: 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     border-radius: var(--radius);
   }
 
   nav a {
-    flex: 1;
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
+    font-size: 0.78rem;
     text-align: center;
   }
 
@@ -1258,6 +1422,7 @@ h3 {
   .services,
   .programs,
   .bridal,
+  .profile,
   .assurance,
   .site-footer {
     padding-right: 1rem;
@@ -1378,6 +1543,25 @@ h3 {
 
   .bridal h2 {
     font-size: 3.5rem;
+  }
+
+  .profile-portrait,
+  .profile-portrait img {
+    min-height: 27rem;
+  }
+
+  .profile-badge {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .profile-copy h2 {
+    max-width: 13ch;
+  }
+
+  .profile-actions,
+  .profile-actions a {
+    width: 100%;
   }
 
   .assurance-main {
