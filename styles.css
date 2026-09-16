@@ -1397,6 +1397,27 @@ h3 {
   font-size: 0.86rem;
 }
 
+.jaeger-credit {
+  display: inline-block;
+  width: fit-content;
+  margin-top: 1.5rem;
+  color: inherit;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  opacity: 0.72;
+  transition: opacity 180ms ease;
+}
+
+.jaeger-credit:hover,
+.jaeger-credit:focus-visible { opacity: 1; }
+
+.jaeger-credit:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
 [data-reveal] {
   transform: translateY(18px);
   opacity: 0;
